@@ -32,6 +32,5 @@ Data Dictionary - https://www.nyc.gov/assets/tlc/downloads/pdf/data_dictionary_t
 
 Data Model
 
-(https://github.com/tejas789/tejas-uber-de-project/blob/63b87e1920fe10c76e66db7058ce428b71d1cf33/data_model.jpeg)https://github.com/tejas789/tejas-uber-de-project/blob/63b87e1920fe10c76e66db7058ce428b71d1cf33/data_model.jpeg
-
+![image](https://github.com/tejas789/tejas-uber-de-project/blob/63b87e1920fe10c76e66db7058ce428b71d1cf33/data_model.jpeg)
 
