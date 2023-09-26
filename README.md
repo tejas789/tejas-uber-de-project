@@ -27,10 +27,11 @@ TLC Trip Record Data Yellow and green taxi trip records include fields capturing
 More info about dataset can be found here:
 
 Website - https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page
+
 Data Dictionary - https://www.nyc.gov/assets/tlc/downloads/pdf/data_dictionary_trip_records_yellow.pdf
 
 Data Model
 
-data_model.jpeg
+[data_model.jpeg](https://github.com/tejas789/tejas-uber-de-project/blob/63b87e1920fe10c76e66db7058ce428b71d1cf33/data_model.jpeg)https://github.com/tejas789/tejas-uber-de-project/blob/63b87e1920fe10c76e66db7058ce428b71d1cf33/data_model.jpeg
 
 
