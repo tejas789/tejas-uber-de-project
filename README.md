@@ -7,4 +7,30 @@ Architecture
 
 ![image](https://github.com/tejas789/tejas-uber-de-project/assets/62348507/6882b95c-03e6-49b8-9272-32e8e79a1801)
 
+Technology Used
+
+Programming Language - Python
+
+Amazon Web Services
+
+S3
+Crawler
+Athena
+Glue
+Redshift
+
+
+Dataset Used
+
+TLC Trip Record Data Yellow and green taxi trip records include fields capturing pick-up and drop-off dates/times, pick-up and drop-off locations, trip distances, itemized fares, rate types, payment types, and driver-reported passenger counts.
+
+More info about dataset can be found here:
+
+Website - https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page
+Data Dictionary - https://www.nyc.gov/assets/tlc/downloads/pdf/data_dictionary_trip_records_yellow.pdf
+
+Data Model
+
+data_model.jpeg
+
 
