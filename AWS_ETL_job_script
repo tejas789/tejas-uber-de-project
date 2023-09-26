@@ -1,0 +1,174 @@
+import sys
+import redshift_connector
+
+conn = redshift_connector.connect(
+     host='redshift-cluster-1.375510725278.ap-south-1.redshift-serverless.amazonaws.com',
+     database='dev',
+     port=5439,
+     user='admin',
+     password='Tejas789'
+  )
+
+conn.autocommit = True
+
+cursor = conn.cursor()
+
+cursor.execute("""
+CREATE TABLE "fact_table" (
+"index" INTEGER,
+  "trip_id" INTEGER,
+  "vendorid" INTEGER,
+  "datetime_id" INTEGER,
+  "passenger_count_id" INTEGER,
+  "trip_distance_id" INTEGER,
+  "rate_code_id" INTEGER,
+  "store_and_fwd_flag" TEXT,
+  "pickup_location_id" INTEGER,
+  "dropoff_location_id" INTEGER,
+  "payment_type_id" INTEGER,
+  "fare_amount" REAL,
+  "extra" REAL,
+  "mta_tax" REAL,
+  "tip_amount" REAL,
+  "tolls_amount" REAL,
+  "improvement_surcharge" REAL,
+  "total_amount" REAL
+)
+""")
+
+cursor.execute("""
+CREATE TABLE "datetime_dim" (
+"index" INTEGER,
+  "datetime_id" INTEGER,
+  "tpep_pickup_datetime" TIMESTAMP,
+  "pick_hour" INTEGER,
+  "pick_day" INTEGER,
+  "pick_month" INTEGER,
+  "pick_year" INTEGER,
+  "pick_weekday" INTEGER,
+  "tpep_dropoff_datetime" TIMESTAMP,
+  "drop_hour" INTEGER,
+  "drop_day" INTEGER,
+  "drop_month" INTEGER,
+  "drop_year" INTEGER,
+  "drop_weekday" INTEGER
+)
+""")
+
+cursor.execute("""
+CREATE TABLE "passenger_count_dim" (
+"index" INTEGER,
+  "passenger_count_id" INTEGER,
+  "passenger_count" INTEGER
+)
+""")
+
+cursor.execute("""
+CREATE TABLE "trip_distance_dim" (
+"index" INTEGER,
+  "trip_distance_id" INTEGER,
+  "trip_distance" REAL
+)
+""")
+
+cursor.execute("""
+CREATE TABLE "rate_code_dim" (
+"index" INTEGER,
+  "rate_code_id" INTEGER,
+  "ratecodeid" INTEGER,
+  "rate_code_name" TEXT
+)
+""")
+
+cursor.execute("""
+CREATE TABLE "pickup_location_dim" (
+"index" INTEGER,
+  "pickup_location_id" INTEGER,
+  "pickup_latitude" REAL,
+  "pickup_longitude" REAL
+)
+""")
+
+cursor.execute("""
+CREATE TABLE "dropoff_location_dim" (
+"index" INTEGER,
+  "dropoff_location_id" INTEGER,
+  "dropoff_latitude" REAL,
+  "dropoff_longitude" REAL
+)
+""")
+
+cursor.execute("""
+CREATE TABLE "payment_type_dim" (
+"index" INTEGER,
+  "payment_type_id" INTEGER,
+  "payment_type" INTEGER,
+  "payment_type_name" TEXT
+)
+""")
+
+cursor.execute("""
+copy datetime_dim from 's3://tejas-uber-de-project/output/datetime_dim.csv'
+credentials 'aws_iam_role=arn:aws:iam::375510725278:role/redshift-s3-role'
+delimiter ','
+region 'ap-south-1'
+IGNOREHEADER 1
+""")
+
+
+cursor.execute("""
+copy dropoff_location_dim from 's3://tejas-uber-de-project/output/dropoff_location_dim.csv'
+credentials 'aws_iam_role=arn:aws:iam::375510725278:role/redshift-s3-role'
+delimiter ','
+region 'ap-south-1'
+IGNOREHEADER 1
+""")
+
+
+cursor.execute("""
+copy pickup_location_dim from 's3://tejas-uber-de-project/output/pickup_location_dim.csv'
+credentials 'aws_iam_role=arn:aws:iam::375510725278:role/redshift-s3-role'
+delimiter ','
+region 'ap-south-1'
+IGNOREHEADER 1
+""")
+
+cursor.execute("""
+copy fact_table from 's3://tejas-uber-de-project/output/fact_table.csv'
+credentials 'aws_iam_role=arn:aws:iam::375510725278:role/redshift-s3-role'
+delimiter ','
+region 'ap-south-1'
+IGNOREHEADER 1
+""")
+
+cursor.execute("""
+copy passenger_count_dim from 's3://tejas-uber-de-project/output/passenger_count_dim.csv'
+credentials 'aws_iam_role=arn:aws:iam::375510725278:role/redshift-s3-role'
+delimiter ','
+region 'ap-south-1'
+IGNOREHEADER 1
+""")
+
+cursor.execute("""
+copy payment_type_dim from 's3://tejas-uber-de-project/output/payment_type_dim.csv'
+credentials 'aws_iam_role=arn:aws:iam::375510725278:role/redshift-s3-role'
+delimiter ','
+region 'ap-south-1'
+IGNOREHEADER 1
+""")
+
+cursor.execute("""
+copy rate_code_dim from 's3://tejas-uber-de-project/output/rate_code_dim.csv'
+credentials 'aws_iam_role=arn:aws:iam::375510725278:role/redshift-s3-role'
+delimiter ','
+region 'ap-south-1'
+IGNOREHEADER 1
+""")
+
+cursor.execute("""
+copy trip_distance_dim from 's3://tejas-uber-de-project/output/trip_distance_dim.csv'
+credentials 'aws_iam_role=arn:aws:iam::375510725278:role/redshift-s3-role'
+delimiter ','
+region 'ap-south-1'
+IGNOREHEADER 1
+""")
