@@ -5,7 +5,8 @@ The goal of this project is to build data pipeline on Uber data using various to
 
 Architecture
 
-![image](https://github.com/tejas789/tejas-uber-de-project/assets/62348507/6882b95c-03e6-49b8-9272-32e8e79a1801)
+![image][(https://github.com/tejas789/tejas-uber-de-project/assets/62348507/6882b95c-03e6-49b8-9272-32e8e79a1801)]
+
 
 Technology Used
 
