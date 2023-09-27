@@ -4,7 +4,7 @@
 The goal of this project is to build data pipeline on Uber data using various tools and technologies, including AWS S3, Python, AWS Glue/Crawler,AWS Athena and AWS redhift.
 
 ## Architecture 
-<img src="Architecture.jpg">
+<img src="Architechture.jpg">
 
 ## Technology Used
 - Programming Language - Python
